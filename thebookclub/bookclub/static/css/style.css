@@ -1,0 +1,12 @@
+.carousel-item>img{
+    height:750px;
+}
+
+#navbardata{
+    margin-top: 2%;
+    margin-left: 3px;
+}
+#user-name > h6{
+    margin-top: 8%;
+    color: white;
+}
