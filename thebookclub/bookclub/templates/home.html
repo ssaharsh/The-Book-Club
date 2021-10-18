@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+
+{% load static %}
+{% block content %}
+<!-- Carosule -->
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://quotefancy.com/media/wallpaper/1600x900/15478-Margaret-Fuller-Quote-Today-a-reader-tomorrow-a-leader.jpg" class="d-block w-100">
+      </div>
+
+      <div class="carousel-item">
+        <img src="https://wallpapercave.com/wp/wp1955025.jpg" class="d-block w-100">
+      </div>
+
+      <div class="carousel-item">
+        <img src="https://mocah.org/uploads/posts/692186-Neil-Gaiman-quote.jpg" class="d-block w-100">
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+<!-- Carosule -->
+{% endblock content %}

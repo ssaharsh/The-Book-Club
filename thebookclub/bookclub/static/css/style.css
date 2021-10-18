@@ -8,5 +8,5 @@
 }
 #user-name > h6{
     margin-top: 8%;
-    color: white;
+    color: white !important;
 }
