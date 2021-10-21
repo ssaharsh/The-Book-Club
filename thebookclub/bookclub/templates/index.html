@@ -61,7 +61,12 @@
           </a>
         </li>
         <li id="user-name" class="nav-item">
-          <h6>Saharsh Sodani</h6>
+        {% if user.is_authenticated %}
+          <h6>{{user.get_full_name}}</h6>
+        {% else %}
+          <h6>Guest</h6>
+        {% endif %}
+          
         </li>
       </ul>
 
