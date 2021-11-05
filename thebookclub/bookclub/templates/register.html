@@ -3,11 +3,11 @@
 
 
 {% block content %}
-<div class="container">
+<!-- <div class="container">
     <div class="row">
         <div class="col-md-4 offset-md-4">
             <div class="login-form bg-light mt-4 p-4">
-                <form method="POST" class="row g-3">
+                <form action="register" method="POST" class="row g-3">
                     {% csrf_token %}
                     <h4 align='center'>SIGN UP</h4>
                     <div class="col-12">
@@ -42,8 +42,8 @@
             </div>
         </div>
     </div>
-</div>
-    <!-- <div class="container">
+</div> -->
+    <div class="container">
         <div class="row justify-content-center text-center">
             <div class="col-lg-6" id="register_form">
                 <h1 align="center">SIGN UP</h1>
@@ -52,7 +52,6 @@
                 
                 <form action="register" method="POST">
                     {% csrf_token %}
-                    {{form.as_p}}
                     {% for field in form %}
                         <p>
                             {{ field.label_tag }}
@@ -66,7 +65,7 @@
                 </form>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <br>
 {% endblock content %}
