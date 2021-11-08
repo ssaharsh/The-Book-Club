@@ -1,10 +1,24 @@
-from django.shortcuts import get_object_or_404, render
-
+from django.shortcuts import get_object_or_404, redirect, render
+from django.template.defaultfilters import slugify
 from .models import Category, Product
+from .forms import LendBookForm
 # Create your views here.
 
 def home(request):
     return render(request,'home.html')
+
+def lend(request):
+    createdby=request.user
+    form=LendBookForm(request.POST,request.FILES)
+    if request.user.is_authenticated:
+        if request.method=='POST':
+            if form.is_valid():
+                form.instance.created_by=createdby
+                form.instance.slug=slugify(form.instance.title)
+                form.save()
+        return render(request, 'lend.html', {'form': form})
+    else:
+        return redirect("users/register")
 
 def all_products(request):
     products = Product.products.all()

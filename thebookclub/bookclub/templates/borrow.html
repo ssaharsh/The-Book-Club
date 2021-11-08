@@ -9,7 +9,26 @@
     <div class="container">
 
       <div class="pb-3 h5">All Books</div>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+
+      <div id="allbook" class="row justify-content-evenly gy-5">
+        {% for product in products %}
+        <div class="card col-lg-4 p-3" style="width: 18rem;">
+            <img src="{{ product.image.url }}" class="card-img-top">
+            <div class="card-body">
+            <h5 class="card-title">{{ product.title }}</h5>
+              {% comment %} <p class="card-text">
+                <a class="text-dark text-decoration-none" href="{{ product.get_absolute_url }}"></a>
+              </p> {% endcomment %}
+              <a href="{{ product.get_absolute_url }}" class="btn btn-primary">View</a> 
+              {% comment %} 
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              {% endcomment %}
+            </div>
+        </div>
+        {% endfor %}
+
+      </div> 
+      <!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
 
         {% for product in products %}
 
@@ -29,7 +48,7 @@
 
         {% endfor %}
 
-      </div>
+      </div> -->
     </div>
   </div>
 
