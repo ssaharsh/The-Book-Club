@@ -7,6 +7,9 @@ from .forms import LendBookForm
 def home(request):
     return render(request,'home.html')
 
+def aboutus(request):
+    return render(request,'aboutus.html')
+
 def lend(request):
     createdby=request.user
     form=LendBookForm(request.POST,request.FILES)
