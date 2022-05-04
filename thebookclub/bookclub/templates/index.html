@@ -13,8 +13,8 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
 
-    
     <title>Home page</title>
 </head>
 <body>
@@ -29,7 +29,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">  
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
           <li id="navbardata" class="nav-item">
             <a class="nav-link" href="{% url 'home:lend' %}">Lend</a>
@@ -56,7 +56,7 @@
           {% if user.is_authenticated %}
             <li id="navbardata"  class="nav-item">
               <a class="nav-link" href={% url 'logout' %}>Logout</a>
-            </li>        
+            </li>
           {% else %}
             <li id="navbardata"  class="nav-item">
               <a class="nav-link" href={% url 'register' %}>Sign Up</a>
@@ -67,9 +67,9 @@
             </li>
           {% endif %}
 
-          
+
         </ul>
-        
+
         <a type="button" role="button" href="{% url "basket:basket_summary" %}"
           class="btn btn-outline-secondary" style="margin-right: 10px;">
 
@@ -81,7 +81,7 @@
                       0
                   {% endif %}
               </div>
-          {% endwith %} 
+          {% endwith %}
 
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
           class="bi bi-cart3" viewBox="0 0 16 16">
@@ -99,7 +99,7 @@
         <ul class="navbar-nav justify-content-end">
           <li>
             <a class="navbar-brand" href="#">
-              <img src="https://www.w3schools.com/bootstrap5/img_avatar1.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
+              <img src="https://www.w3schools.com/bootstrap5/img_avatar1.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill">
             </a>
           </li>
           <li id="user-name" class="nav-item">
@@ -108,14 +108,18 @@
           {% else %}
             <h6>Guest</h6>
           {% endif %}
-            
+
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <!-- Navbar -->
-{% block content %}{% endblock content %}
+    <div id="container">
+    <main>
+      {% block content %}{% endblock content %}
+    </main>
+  </div>
 <!-- footer -->
 <!-- Footer -->
 <footer
@@ -131,10 +135,7 @@
         <h5 class="text-uppercase">THE BOOK CLUB</h5>
 
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque
-          ea quis molestias. Fugiat pariatur maxime quis culpa corporis vitae
-          repudiandae aliquam voluptatem veniam, est atque cumque eum delectus
-          sint!
+          This website aims to enlighten the use of books and it's benefits in today's technological world. Due to pandemic there has been a pause in education in one way or another, and also affected our way of living and our earnings. To make sure money do not become an obstacle in education we have developed this website to make sure the education flow does not stop and money does not become a barrier for someone's education
         </p>
       </div>
       <!--Grid column-->
@@ -145,7 +146,7 @@
 
         <ul class="list-unstyled mb-0">
           <li>
-            <a href="{% url 'home:aboutus' %}" class="text-white">About US</a>
+            <a href="{% url 'home:aboutus' %}" class="text-white">About Us</a>
           </li>
           <li>
             <a href="{% url 'home:lend' %}" class="text-white">Lend</a>
@@ -153,7 +154,7 @@
           <li>
             <a href={% url 'register' %} class="text-white">Sign Up</a>
           </li>
-          
+
         </ul>
       </div>
       <!--Grid column-->
@@ -163,7 +164,7 @@
         <h5 class="text-uppercase mb-0">Links</h5>
 
         <ul class="list-unstyled">
-          <li>
+          <li style="display: inline;">
             <a href="#!" class="text-white"
               ><a
                 class="btn btn-outline-light btn-floating m-1"
@@ -172,7 +173,7 @@
                 ><i class="fab fa-facebook-f"></i></a
             ></a>
           </li>
-          <li>
+          <li style="display: inline;">
             <a href="#!" class="text-white">
               <a
                 class="btn btn-outline-light btn-floating m-1"
@@ -181,7 +182,7 @@
                 ><i class="fab fa-github"></i></a
             ></a>
           </li>
-          <li>
+          <li style="display: inline;">
             <a href="#!" class="text-white"
               ><a
                 class="btn btn-outline-light btn-floating m-1"
@@ -201,7 +202,7 @@
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
     © 2020 Copyright:
-    <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    <a class="text-white" href="http://spr.pythonanywhere.com/">TheBookClub</a>
   </div>
   <!-- Copyright -->
 </footer>

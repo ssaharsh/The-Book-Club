@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-h0!07qs#4@7a-qot@_r5y773xtx7n(8@x4-jcxi@ubk8$_w^^5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['spr.pythonanywhere.com']
 
 
 # Application definition
@@ -77,17 +77,27 @@ WSGI_APPLICATION = 'bookclub.wsgi.application'
 LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/'
 
+#Email
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'thebookclubSPR@gmail.com'
+EMAIL_HOST_PASSWORD = 'bookclub@123'
+EMAIL_PORT = 587
 
+STRIPE_SECRET_KEY = 'sk_test_51JwJXUSC9kiyrguvZTPkdN13FwC4D6JGmGvV0mrFeICdYxONlYbvvtj2DjBbyRQ9tx8JaVVwqqa8O8Bi15k35gNN00KIQuN3eK'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51JwJXUSC9kiyrguviZpC6n6meB3RZYomi6PgPaavw6iEqS1VrXQie3ZWfiTnPa4HfvAXl43ZpGtnvkbj2kQIJ00o00cnRLOncH'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'SPR$thebookclub',
+        'USER': 'SPR',
+        'PASSWORD': 'Saharsh@123',
+        'HOST': 'SPR.mysql.pythonanywhere-services.com',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

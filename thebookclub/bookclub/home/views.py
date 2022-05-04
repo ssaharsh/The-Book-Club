@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.template.defaultfilters import slugify
 from .models import Category, Product
 from .forms import LendBookForm
+from django.contrib import messages
 # Create your views here.
 
 def home(request):
@@ -19,6 +20,8 @@ def lend(request):
                 form.instance.created_by=createdby
                 form.instance.slug=slugify(form.instance.title)
                 form.save()
+                messages.success(request, 'Form submission successful')
+                return redirect("borrow/")
         return render(request, 'lend.html', {'form': form})
     else:
         return redirect("users/register")

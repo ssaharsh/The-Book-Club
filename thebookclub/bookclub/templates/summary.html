@@ -51,11 +51,37 @@
     {% endfor %}
     <div class="col-12 text-end">
       <div class="h6 fw-bold">Sub Total: &#x20b9;<div id="subtotal" class="d-inline-flex">{{basket.get_total_price}}</div>
-      <div style="margin:20px 0px 20px 0px"><a href="https://www.paypal.com/in/home"><button class="btn btn-primary">Proceed</button></a></div>
+      <div style="margin:20px 0px 20px 0px">
+
+        <form id="myForm" action='payment' method="POST">
+          {% csrf_token %}
+          <input type="hidden" id="amount" name="amount" value="{{basket.get_total_price}}"/>
+          <input type="hidden" id="stripeToken" name="stripeToken"/>
+          <input type="hidden" id="stripeEmail" name="stripeEmail"/>
+        </form>
+        <!--<input type="button" id="customButton" value="pay">-->
+        <button type="button" class="btn btn-dark" id="customButton" value="Pay">Pay</button>
+        <!-- <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="pk_test_51JwJXUSC9kiyrguviZpC6n6meB3RZYomi6PgPaavw6iEqS1VrXQie3ZWfiTnPa4HfvAXl43ZpGtnvkbj2kQIJ00o00cnRLOncH"
+          data-description="A Django Charge"
+          data-amount={{basket.get_total_price}}*100
+          data-currency="INR"
+          data-locale="auto">
+        </script> -->
+      </div>
+
+      {% comment %} <div style="margin:20px 0px 20px 0px"><a href="https://www.paypal.com/in/home"><button class="btn btn-primary">Proceed</button></a></div> {% endcomment %}
     </div>
     </div>
   </div>
 </main>
+
+{% comment %} <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="{{ key }}"
+    data-description="A Django Charge"
+    data-amount="500"
+    data-locale="auto">
+</script> {% endcomment %}
 
 <script>
   // Delete Item
@@ -99,6 +125,33 @@
       error: function (xhr, errmsg, err) {}
     });
   })
+
+ //Payment handler
+  var handler = StripeCheckout.configure({
+    key: 'pk_test_51JwJXUSC9kiyrguviZpC6n6meB3RZYomi6PgPaavw6iEqS1VrXQie3ZWfiTnPa4HfvAXl43ZpGtnvkbj2kQIJ00o00cnRLOncH',
+    token: function(token) {
+        $("#stripeToken").val(token.id);
+        $("#stripeEmail").val(token.email);
+        $("#myForm").submit();
+    }
+  });
+
+  $('#customButton').on('click', function(e) {
+    var amount = $("#amount").val() *100;
+    // Open Checkout with further options
+    handler.open({
+      name: 'Checkout',
+      currency:'INR',
+      amount: amount
+    });
+    e.preventDefault();
+  });
+
+  // Close Checkout on page navigation
+  $(window).on('popstate', function() {
+    handler.close();
+  });
+
 </script>
 
 {% endblock %}

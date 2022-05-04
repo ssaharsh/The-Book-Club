@@ -13,12 +13,20 @@
 /* Qouts */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background-color: cornsilk;
+}
+
+#container{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .para {
@@ -95,12 +103,13 @@ body {
   font-size: 50px;
   font-style: italic;
   background-color: cornsilk;
+  margin-bottom:0px;
 }
-footer {
-  width: 100%;
-  left: 0;
-  bottom: 0;
-}
+/*footer {*/
+/*  width: 100%;*/
+/*  left: 0;*/
+/*  bottom: 0;*/
+/*}*/
 /* aboutus pages */
 img {
   border-radius: 5px 5px 0 0;
@@ -124,3 +133,9 @@ div.user {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px; /* 5px rounded corners */
 }
+@media only screen and (max-width: 600px) {
+  .uls {
+    font-size: 22px;
+  }
+}
+

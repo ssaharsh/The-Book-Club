@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 
 from home.models import Product
 
@@ -47,3 +47,8 @@ def basket_update(request):
         baskettotal = basket.get_total_price()
         response = JsonResponse({'qty': basketqty, 'subtotal': baskettotal})
         return response
+
+
+def payment(request):
+    if request.method=='POST':
+        return render(request,'payment_confirm.html')
